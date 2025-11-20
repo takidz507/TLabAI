@@ -103,9 +103,10 @@ const FloatingPlayer: React.FC<FloatingPlayerProps> = ({ videoId, onClose, isDar
         width: '400px'
       };
 
-  // Fix for Error 153: Use youtube-nocookie, add origin, and robust params
+  // Fix for Error 153: Use standard youtube domain instead of nocookie for better compatibility
+  // Ensure origin is set correctly for JS API
   const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&origin=${origin}`;
+  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&origin=${origin}`;
 
   return (
     <div

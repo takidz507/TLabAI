@@ -195,7 +195,8 @@ function App() {
   // --- Video Helper ---
   const extractVideoId = (text: string): string | null => {
     if (!text) return null;
-    // Enhanced Regex to support music.youtube, m.youtube, shorts, live, and dirty links with si or timestamp
+    // Robust Regex for YouTube Links including share, shorts, live, etc.
+    // This matches standard, shortened, and embedded links, and shared links with parameters
     const regExp = /(?:https?:\/\/)?(?:www\.|m\.|music\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|shorts\/|live\/|watch\?v=|watch\?.+&v=))([\w-]{11})(?:[&?].*)?/;
     const match = text.match(regExp);
     return match ? match[1] : null;
